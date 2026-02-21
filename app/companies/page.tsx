@@ -16,18 +16,11 @@ const COUNTRIES = Array.from(new Set((companies as Company[]).map(c => c.country
 const PAGE_SIZE = 10;
 
 const STAGE_COLORS: Record<string, string> = {
-    'Late Stage': 'rgba(16,185,129,0.15)',
-    'Series D': 'rgba(99,102,241,0.15)',
-    'Series C': 'rgba(59,130,246,0.15)',
-    'Series B': 'rgba(245,158,11,0.15)',
-    'Series A': 'rgba(239,68,68,0.15)',
-};
-const STAGE_TEXT: Record<string, string> = {
-    'Late Stage': '#10b981',
-    'Series D': '#6366f1',
-    'Series C': '#3b82f6',
-    'Series B': '#f59e0b',
-    'Series A': '#ef4444',
+    'Late Stage': '#a3e635',
+    'Series D': '#facc15',
+    'Series C': '#60a5fa',
+    'Series B': '#fb923c',
+    'Series A': '#f87171',
 };
 
 export default function CompaniesPage() {
@@ -106,40 +99,38 @@ export default function CompaniesPage() {
 
     const SortIcon = ({ field }: { field: SortField }) =>
         sort.field === field
-            ? sort.dir === 'asc' ? <ChevronUp size={12} style={{ color: 'var(--accent)' }} /> : <ChevronDown size={12} style={{ color: 'var(--accent)' }} />
-            : <ChevronDown size={12} style={{ color: 'var(--text-muted)', opacity: 0.4 }} />;
+            ? sort.dir === 'asc' ? <ChevronUp size={14} strokeWidth={3} /> : <ChevronDown size={14} strokeWidth={3} />
+            : <ChevronDown size={14} strokeWidth={3} className="opacity-20" />;
 
     return (
-        <div className="p-6 max-w-[1400px] mx-auto animate-fade-in">
+        <div className="p-8 max-w-[1400px] mx-auto animate-fade-in">
             {/* Header */}
-            <div className="flex items-start justify-between mb-6">
+            <div className="flex items-start justify-between mb-8">
                 <div>
-                    <h1 className="text-2xl font-bold tracking-tight mb-1">Companies</h1>
-                    <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-                        {filtered.length} companies in pipeline
+                    <h1 className="text-4xl font-black uppercase tracking-tighter mb-1">Companies</h1>
+                    <p className="text-sm font-bold uppercase tracking-widest text-gray-600">
+                        {filtered.length} COMPANIES IN PIPELINE
                     </p>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-4">
                     {hasFilters && (
-                        <button className="btn btn-ghost text-sm" onClick={clearFilters}>
-                            <X size={14} /> Clear filters
+                        <button className="neo-btn neo-btn-secondary text-sm" onClick={clearFilters}>
+                            <X size={16} strokeWidth={3} /> CLEAR FILTERS
                         </button>
                     )}
                     <button
-                        className="btn btn-secondary"
+                        className="neo-btn neo-btn-secondary"
                         onClick={() => setSaveModal(true)}
                     >
-                        <Bookmark size={14} /> Save Search
+                        <Bookmark size={16} strokeWidth={3} /> SAVE SEARCH
                     </button>
                     <button
-                        className="btn btn-secondary"
+                        className="neo-btn neo-btn-accent"
                         onClick={() => setFiltersOpen(f => !f)}
-                        style={filtersOpen ? { borderColor: 'var(--accent)', color: 'var(--accent)' } : {}}
                     >
-                        <SlidersHorizontal size={14} /> Filters
+                        <SlidersHorizontal size={16} strokeWidth={3} /> {filtersOpen ? 'CLOSE FILTERS' : 'FILTERS'}
                         {(selectedIndustries.length + selectedStages.length + selectedCountries.length) > 0 && (
-                            <span className="ml-1 px-1.5 py-0.5 rounded text-xs font-bold"
-                                style={{ background: 'var(--accent)', color: 'white' }}>
+                            <span className="ml-2 px-1.5 py-0.5 bg-black text-white text-xs font-black">
                                 {selectedIndustries.length + selectedStages.length + selectedCountries.length}
                             </span>
                         )}
@@ -147,14 +138,16 @@ export default function CompaniesPage() {
                 </div>
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex gap-6">
                 {/* Filters panel */}
                 {filtersOpen && (
-                    <div className="card p-5 w-72 flex-shrink-0 animate-fade-in self-start">
+                    <div className="neo-card w-80 self-start animate-fade-in">
                         <FilterGroup label="Industry" options={INDUSTRIES} selected={selectedIndustries}
                             onToggle={(v) => toggleFilter(selectedIndustries, v, setSelectedIndustries)} />
+                        <div className="my-6 border-b-2 border-black"></div>
                         <FilterGroup label="Stage" options={STAGES} selected={selectedStages}
                             onToggle={(v) => toggleFilter(selectedStages, v, setSelectedStages)} />
+                        <div className="my-6 border-b-2 border-black"></div>
                         <FilterGroup label="Country" options={COUNTRIES} selected={selectedCountries}
                             onToggle={(v) => toggleFilter(selectedCountries, v, setSelectedCountries)} />
                     </div>
@@ -163,79 +156,75 @@ export default function CompaniesPage() {
                 {/* Main */}
                 <div className="flex-1 min-w-0">
                     {/* Search */}
-                    <div className="relative mb-4">
-                        <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: 'var(--text-muted)' }} />
+                    <div className="relative mb-6">
+                        <Search size={20} strokeWidth={3} className="absolute left-4 top-1/2 -translate-y-1/2" />
                         <input
-                            className="input pl-9"
-                            placeholder="Search companies, domains, tags…"
+                            className="neo-input pl-12 text-lg font-bold"
+                            placeholder="SEARCH COMPANIES, DOMAINS, TAGS…"
                             value={query}
                             onChange={e => { setQuery(e.target.value); setPage(1); }}
                         />
                     </div>
 
-                    {/* Table */}
-                    <div className="card overflow-hidden">
+                    {/* Table Container */}
+                    <div className="neo-card p-0 overflow-hidden">
                         <div className="overflow-x-auto">
                             <table className="data-table">
                                 <thead>
                                     <tr>
-                                        <th onClick={() => toggleSort('name')} className="w-[260px]">
-                                            <span className="flex items-center gap-1">Company <SortIcon field="name" /></span>
+                                        <th onClick={() => toggleSort('name')} className="cursor-pointer">
+                                            <span className="flex items-center gap-2">COMPANY <SortIcon field="name" /></span>
                                         </th>
-                                        <th>Industry</th>
-                                        <th onClick={() => toggleSort('stage')}>
-                                            <span className="flex items-center gap-1">Stage <SortIcon field="stage" /></span>
+                                        <th>INDUSTRY</th>
+                                        <th onClick={() => toggleSort('stage')} className="cursor-pointer text-center">
+                                            <span className="flex items-center justify-center gap-2">STAGE <SortIcon field="stage" /></span>
                                         </th>
-                                        <th onClick={() => toggleSort('founded')}>
-                                            <span className="flex items-center gap-1">Founded <SortIcon field="founded" /></span>
+                                        <th onClick={() => toggleSort('founded')} className="cursor-pointer">
+                                            <span className="flex items-center gap-2">FOUNDED <SortIcon field="founded" /></span>
                                         </th>
-                                        <th>Location</th>
-                                        <th>Funding</th>
+                                        <th>LOCATION</th>
+                                        <th>FUNDING</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {paginated.length === 0 ? (
                                         <tr>
-                                            <td colSpan={6} className="py-16 text-center">
-                                                <Building2 size={32} className="mx-auto mb-3" style={{ color: 'var(--text-muted)' }} />
-                                                <div style={{ color: 'var(--text-secondary)' }} className="text-sm">No companies match your filters</div>
+                                            <td colSpan={6} className="py-24 text-center">
+                                                <Building2 size={48} strokeWidth={3} className="mx-auto mb-4" />
+                                                <div className="text-xl font-black uppercase">No companies match your search</div>
                                             </td>
                                         </tr>
                                     ) : paginated.map(c => (
-                                        <tr key={c.id} className="group cursor-pointer" onClick={() => router.push(`/companies/${c.id}`)}>
-                                            <td>
-                                                <div className="flex items-center gap-3">
-                                                    <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-xs font-bold"
-                                                        style={{ background: 'var(--bg-hover)', color: 'var(--accent)' }}>
+                                        <tr key={c.id} className="group cursor-pointer hover:bg-yellow-50" onClick={() => router.push(`/companies/${c.id}`)}>
+                                            <td className="font-black">
+                                                <div className="flex items-center gap-4">
+                                                    <div className="w-10 h-10 border-2 border-black bg-white flex items-center justify-center flex-shrink-0 text-sm font-black shadow-[2px 2px 0px 0px #000]">
                                                         {c.name.slice(0, 2).toUpperCase()}
                                                     </div>
                                                     <div>
-                                                        <div className="font-semibold text-sm flex items-center gap-1">
-                                                            {c.name}
-                                                            <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: 'var(--accent)' }} />
+                                                        <div className="text-base flex items-center gap-1 group-hover:text-indigo-600 transition-colors">
+                                                            {c.name.toUpperCase()}
+                                                            <ArrowUpRight size={14} strokeWidth={3} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                                                         </div>
-                                                        <div className="text-xs flex items-center gap-1" style={{ color: 'var(--text-muted)' }}>
-                                                            <Globe size={10} />{c.domain}
+                                                        <div className="text-xs font-bold text-gray-500 flex items-center gap-1">
+                                                            <Globe size={12} strokeWidth={3} />{c.domain}
                                                         </div>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>{c.industry}</span>
-                                            </td>
-                                            <td>
-                                                <span className="badge text-xs"
+                                            <td className="font-bold text-gray-600">{c.industry.toUpperCase()}</td>
+                                            <td className="text-center">
+                                                <span className="neo-badge"
                                                     style={{
-                                                        background: STAGE_COLORS[c.stage] || 'var(--bg-hover)',
-                                                        color: STAGE_TEXT[c.stage] || 'var(--text-secondary)',
+                                                        background: STAGE_COLORS[c.stage] || 'var(--bg-white)',
                                                     }}>
                                                     {c.stage}
                                                 </span>
                                             </td>
-                                            <td className="text-sm tabular-nums" style={{ color: 'var(--text-secondary)' }}>{c.founded}</td>
-                                            <td className="text-sm" style={{ color: 'var(--text-secondary)' }}>{c.location}</td>
+                                            <td className="font-bold tabular-nums">{c.founded}</td>
+                                            <td className="font-bold">{c.location.toUpperCase()}</td>
                                             <td>
-                                                <span className="font-semibold text-sm" style={{ color: '#10b981' }}>{c.funding}</span>
+                                                <span className="text-base font-black text-green-600">{c.funding}</span>
                                             </td>
                                         </tr>
                                     ))}
@@ -245,25 +234,25 @@ export default function CompaniesPage() {
 
                         {/* Pagination */}
                         {totalPages > 1 && (
-                            <div className="flex items-center justify-between px-4 py-3"
-                                style={{ borderTop: '1px solid var(--border)' }}>
-                                <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
-                                    {(page - 1) * PAGE_SIZE + 1}–{Math.min(page * PAGE_SIZE, filtered.length)} of {filtered.length}
+                            <div className="flex items-center justify-between px-6 py-6 border-t-2 border-black bg-gray-50">
+                                <span className="text-xs font-black uppercase tracking-widest">
+                                    {(page - 1) * PAGE_SIZE + 1}–{Math.min(page * PAGE_SIZE, filtered.length)} OF {filtered.length} COMPANIES
                                 </span>
-                                <div className="flex items-center gap-1">
-                                    <button className="btn btn-ghost p-2" disabled={page === 1} onClick={() => setPage(p => p - 1)}>
-                                        <ChevronLeft size={15} />
+                                <div className="flex items-center gap-2">
+                                    <button className="neo-btn neo-btn-secondary p-2" disabled={page === 1} onClick={() => setPage(p => p - 1)}>
+                                        <ChevronLeft size={18} strokeWidth={3} />
                                     </button>
-                                    {Array.from({ length: Math.min(totalPages, 7) }, (_, i) => i + 1).map(p => (
-                                        <button
-                                            key={p}
-                                            className="btn btn-ghost text-xs w-8 h-8 p-0"
-                                            style={p === page ? { background: 'var(--accent-dim)', color: 'var(--accent)' } : {}}
-                                            onClick={() => setPage(p)}
-                                        >{p}</button>
-                                    ))}
-                                    <button className="btn btn-ghost p-2" disabled={page === totalPages} onClick={() => setPage(p => p + 1)}>
-                                        <ChevronRight size={15} />
+                                    <div className="flex gap-1">
+                                        {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => i + 1).map(p => (
+                                            <button
+                                                key={p}
+                                                className={`neo-btn w-10 h-10 p-0 text-sm font-black ${p === page ? 'neo-btn-accent' : 'neo-btn-secondary'}`}
+                                                onClick={() => setPage(p)}
+                                            >{p}</button>
+                                        ))}
+                                    </div>
+                                    <button className="neo-btn neo-btn-secondary p-2" disabled={page === totalPages} onClick={() => setPage(p => p + 1)}>
+                                        <ChevronRight size={18} strokeWidth={3} />
                                     </button>
                                 </div>
                             </div>
@@ -274,24 +263,24 @@ export default function CompaniesPage() {
 
             {/* Save Modal */}
             {saveModal && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ background: 'rgba(0,0,0,0.7)' }}>
-                    <div className="card p-6 w-96 animate-fade-in">
-                        <h3 className="font-semibold mb-1">Save Search</h3>
-                        <p className="text-sm mb-4" style={{ color: 'var(--text-secondary)' }}>
-                            Save your current query and filters for quick access later.
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+                    <div className="neo-card max-w-md w-full animate-fade-in">
+                        <h3 className="text-2xl font-black uppercase mb-2">Save Search</h3>
+                        <p className="text-sm font-bold text-gray-600 mb-6">
+                            SAVE YOUR CURRENT QUERY AND FILTERS FOR QUICK ACCESS LATER.
                         </p>
                         <input
-                            className="input mb-4"
-                            placeholder="e.g. AI Infra Series B US"
+                            className="neo-input mb-6 font-bold"
+                            placeholder="E.G. AI INFRA SERIES B US"
                             value={saveName}
                             onChange={e => setSaveName(e.target.value)}
                             onKeyDown={e => e.key === 'Enter' && saveSearch()}
                             autoFocus
                         />
-                        <div className="flex gap-2 justify-end">
-                            <button className="btn btn-ghost" onClick={() => setSaveModal(false)}>Cancel</button>
-                            <button className="btn btn-primary" onClick={saveSearch} disabled={!saveName.trim()}>
-                                <Bookmark size={14} /> Save
+                        <div className="flex gap-4 justify-end">
+                            <button className="neo-btn neo-btn-secondary" onClick={() => setSaveModal(false)}>CANCEL</button>
+                            <button className="neo-btn" onClick={saveSearch} disabled={!saveName.trim()}>
+                                <Bookmark size={16} strokeWidth={3} /> SAVE
                             </button>
                         </div>
                     </div>
@@ -305,33 +294,23 @@ function FilterGroup({ label, options, selected, onToggle }: {
     label: string; options: string[]; selected: string[]; onToggle: (v: string) => void;
 }) {
     return (
-        <div className="mb-5 last:mb-0">
-            <div className="text-[10px] font-semibold uppercase tracking-widest mb-3"
-                style={{ color: 'var(--text-muted)' }}>
+        <div className="last:mb-0">
+            <div className="text-xs font-black uppercase tracking-widest mb-4">
                 {label}
             </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+            <div className="flex flex-wrap gap-2">
                 {options.map(opt => {
                     const active = selected.includes(opt);
                     return (
                         <button
                             key={opt}
                             onClick={() => onToggle(opt)}
-                            style={{
-                                padding: '5px 11px',
-                                borderRadius: '20px',
-                                fontSize: '12px',
-                                fontWeight: 500,
-                                border: `1px solid ${active ? 'var(--accent)' : 'var(--border)'}`,
-                                background: active ? 'var(--accent-dim)' : 'transparent',
-                                color: active ? 'var(--accent)' : 'var(--text-secondary)',
-                                cursor: 'pointer',
-                                transition: 'all 0.15s',
-                                whiteSpace: 'nowrap',
-                                lineHeight: 1.3,
-                            }}
+                            className={`px-3 py-1.5 border-2 border-black text-xs font-bold transition-all ${active
+                                    ? 'bg-indigo-600 text-white shadow-[2px 2px 0px 0px #000] -translate-x-0.5 -translate-y-0.5'
+                                    : 'bg-white text-black hover:bg-gray-100 shadow-[2px 2px 0px 0px #000]'
+                                }`}
                         >
-                            {opt}
+                            {opt.toUpperCase()}
                         </button>
                     );
                 })}

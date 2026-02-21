@@ -15,16 +15,16 @@ import {
 } from '@/lib/utils';
 
 const SIGNAL_COLORS: Record<string, { bg: string; text: string }> = {
-    funding: { bg: 'rgba(16,185,129,0.12)', text: '#10b981' },
-    product: { bg: 'rgba(99,102,241,0.12)', text: '#6366f1' },
-    hiring: { bg: 'rgba(245,158,11,0.12)', text: '#f59e0b' },
-    partnership: { bg: 'rgba(59,130,246,0.12)', text: '#3b82f6' },
-    growth: { bg: 'rgba(139,92,246,0.12)', text: '#8b5cf6' },
-    acquisition: { bg: 'rgba(239,68,68,0.12)', text: '#ef4444' },
-    leadership: { bg: 'rgba(245,158,11,0.12)', text: '#f59e0b' },
-    regulatory: { bg: 'rgba(239,68,68,0.12)', text: '#ef4444' },
-    contract: { bg: 'rgba(16,185,129,0.12)', text: '#10b981' },
-    expansion: { bg: 'rgba(139,92,246,0.12)', text: '#8b5cf6' },
+    funding: { bg: '#a3e635', text: '#000000' },
+    product: { bg: '#facc15', text: '#000000' },
+    hiring: { bg: '#fb923c', text: '#000000' },
+    partnership: { bg: '#60a5fa', text: '#000000' },
+    growth: { bg: '#c084fc', text: '#000000' },
+    acquisition: { bg: '#f87171', text: '#000000' },
+    leadership: { bg: '#fb923c', text: '#000000' },
+    regulatory: { bg: '#f87171', text: '#000000' },
+    contract: { bg: '#a3e635', text: '#000000' },
+    expansion: { bg: '#c084fc', text: '#000000' },
 };
 
 export default function CompanyProfile() {
@@ -55,12 +55,14 @@ export default function CompanyProfile() {
 
     if (!company) {
         return (
-            <div className="p-8 text-center">
-                <AlertCircle size={40} className="mx-auto mb-4" style={{ color: 'var(--text-muted)' }} />
-                <h2 className="text-lg font-semibold mb-2">Company not found</h2>
-                <button className="btn btn-secondary mt-4" onClick={() => router.push('/companies')}>
-                    <ArrowLeft size={14} /> Go back
-                </button>
+            <div className="p-12 text-center animate-fade-in">
+                <div className="neo-card inline-block p-12">
+                    <AlertCircle size={64} strokeWidth={3} className="mx-auto mb-6" />
+                    <h2 className="text-3xl font-black uppercase mb-4">Company not found</h2>
+                    <button className="neo-btn" onClick={() => router.push('/companies')}>
+                        <ArrowLeft size={18} strokeWidth={3} /> GO BACK
+                    </button>
+                </div>
             </div>
         );
     }
@@ -128,47 +130,42 @@ export default function CompanyProfile() {
     const inList = lists.some(l => l.companyIds.includes(company.id));
 
     return (
-        <div className="p-8 max-w-[1200px] mx-auto animate-fade-in space-y-8">
+        <div className="p-8 max-w-[1200px] mx-auto animate-fade-in space-y-10">
             {/* Header / Nav */}
             <div className="flex items-center justify-between">
                 <button
                     onClick={() => router.back()}
-                    className="btn btn-ghost -ml-4"
+                    className="neo-btn neo-btn-secondary"
                 >
-                    <ArrowLeft size={16} /> Back
+                    <ArrowLeft size={18} strokeWidth={3} /> BACK
                 </button>
             </div>
 
             {/* Title / Hero */}
-            <div className="card">
-                <div className="flex items-start justify-between gap-6">
+            <div className="neo-card p-8">
+                <div className="flex flex-wrap items-start justify-between gap-10">
                     <div
-                        className="w-14 h-14 rounded-xl flex items-center justify-center text-xl font-bold flex-shrink-0"
-                        style={{
-                            background: 'linear-gradient(135deg, var(--accent-dim), rgba(139,92,246,0.15))',
-                            color: 'var(--accent)',
-                            border: '1px solid rgba(99,102,241,0.2)',
-                        }}
+                        className="w-20 h-20 border-4 border-black bg-white flex items-center justify-center text-3xl font-black flex-shrink-0 shadow-[4px 4px 0px 0px #000]"
                     >
                         {company.name.slice(0, 2).toUpperCase()}
                     </div>
 
                     <div className="flex-1 min-w-0">
-                        <div className="flex flex-wrap items-start gap-3 mb-2">
-                            <h1 className="text-xl font-bold">{company.name}</h1>
-                            <span className="badge" style={{ background: 'rgba(16,185,129,0.15)', color: '#10b981' }}>
+                        <div className="flex flex-wrap items-start gap-4 mb-4">
+                            <h1 className="text-4xl font-black uppercase tracking-tighter">{company.name}</h1>
+                            <span className="neo-badge bg-[#a3e635]">
                                 {company.stage}
                             </span>
                             {inList && (
-                                <span className="badge" style={{ background: 'var(--green-dim)', color: 'var(--green)' }}>
-                                    <Check size={10} /> In a list
+                                <span className="neo-badge bg-[#60a5fa] text-white">
+                                    <Check size={12} strokeWidth={3} /> SAVED
                                 </span>
                             )}
                         </div>
-                        <p className="text-sm mb-3" style={{ color: 'var(--text-secondary)' }}>{company.description}</p>
+                        <p className="text-lg font-bold mb-6 text-gray-700 leading-tight">{company.description}</p>
                         <div className="flex flex-wrap gap-2">
                             {company.tags.map((t: string) => (
-                                <span key={t} className="badge" style={{ background: 'var(--bg-hover)', color: 'var(--text-secondary)', border: '1px solid var(--border)', padding: '4px 10px' }}>
+                                <span key={t} className="px-3 py-1 bg-gray-100 border-2 border-black text-xs font-black uppercase">
                                     {t}
                                 </span>
                             ))}
@@ -176,64 +173,63 @@ export default function CompanyProfile() {
                     </div>
 
                     {/* Action buttons */}
-                    <div className="flex flex-wrap gap-3 flex-shrink-0 relative">
-                        <button className="btn btn-secondary" onClick={() => setListDropdown(d => !d)}>
-                            <BookmarkPlus size={14} /> Save to List
+                    <div className="flex flex-wrap gap-4 flex-shrink-0 relative">
+                        <button className="neo-btn" onClick={() => setListDropdown(d => !d)}>
+                            <BookmarkPlus size={18} strokeWidth={3} /> SAVE TO LIST
                         </button>
 
                         {listDropdown && (
-                            <div className="absolute right-0 top-full mt-2 w-64 card p-3 z-20 animate-fade-in">
-                                <div className="text-xs font-semibold mb-2" style={{ color: 'var(--text-muted)' }}>YOUR LISTS</div>
+                            <div className="absolute right-0 top-full mt-4 w-72 neo-card p-4 z-20 animate-fade-in">
+                                <div className="text-xs font-black uppercase mb-3">YOUR LISTS</div>
                                 {lists.length === 0 && (
-                                    <p className="text-xs py-2" style={{ color: 'var(--text-muted)' }}>No lists yet. Create one below.</p>
+                                    <p className="text-xs font-bold py-2 text-gray-500">No lists yet. Create one below.</p>
                                 )}
-                                {lists.map(l => (
-                                    <button
-                                        key={l.id}
-                                        className="w-full text-left px-2 py-2 rounded text-sm flex justify-between items-center transition-colors"
-                                        style={{ background: 'transparent' }}
-                                        onMouseEnter={e => (e.currentTarget.style.background = 'var(--bg-hover)')}
-                                        onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
-                                        onClick={() => handleSaveToList(l.id)}
-                                    >
-                                        <span>{l.name}</span>
-                                        {l.companyIds.includes(company.id) && <Check size={12} style={{ color: 'var(--green)' }} />}
-                                    </button>
-                                ))}
-                                <div className="border-t mt-2 pt-2" style={{ borderColor: 'var(--border)' }}>
-                                    <div className="flex gap-1">
+                                <div className="space-y-1 mb-4">
+                                    {lists.map(l => (
+                                        <button
+                                            key={l.id}
+                                            className="w-full text-left px-3 py-2 border-2 border-transparent hover:border-black hover:bg-gray-50 font-bold text-sm flex justify-between items-center transition-all"
+                                            onClick={() => handleSaveToList(l.id)}
+                                        >
+                                            <span>{l.name.toUpperCase()}</span>
+                                            {l.companyIds.includes(company.id) && <Check size={14} strokeWidth={4} className="text-green-600" />}
+                                        </button>
+                                    ))}
+                                </div>
+                                <div className="border-t-2 border-black pt-4">
+                                    <div className="flex gap-2">
                                         <input
-                                            className="input text-xs py-1.5"
-                                            placeholder="New list name…"
+                                            className="neo-input py-2 text-xs font-bold"
+                                            placeholder="NEW LIST NAME…"
                                             value={newListName}
                                             onChange={e => setNewListName(e.target.value)}
                                             onKeyDown={e => e.key === 'Enter' && handleCreateList()}
                                         />
-                                        <button className="btn btn-primary px-2 py-1" onClick={handleCreateList}>
-                                            <Plus size={13} />
+                                        <button className="neo-btn p-2" onClick={handleCreateList}>
+                                            <Plus size={16} strokeWidth={3} />
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         )}
 
-                        <a href={`https://${company.domain}`} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
-                            <ExternalLink size={14} />
+                        <a href={`https://${company.domain}`} target="_blank" rel="noopener noreferrer" className="neo-btn neo-btn-secondary">
+                            <ExternalLink size={18} strokeWidth={3} />
                         </a>
                     </div>
                 </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-5">
+            <div className="grid grid-cols-3 gap-8">
                 {/* ── Left 2/3 ── */}
-                <div className="col-span-2 space-y-5">
+                <div className="col-span-2 space-y-8">
 
                     {/* Metadata grid */}
-                    <div className="card p-5">
-                        <h2 className="text-sm font-semibold mb-4 flex items-center gap-2">
-                            <TrendingUp size={15} style={{ color: 'var(--accent)' }} /> Company Overview
+                    <div className="neo-card">
+                        <h2 className="text-xl font-black uppercase mb-6 flex items-center gap-3">
+                            <TrendingUp size={20} strokeWidth={3} /> COMPANY OVERVIEW
                         </h2>
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-2 gap-6">
                             {[
                                 { icon: Calendar, label: 'Founded', value: company.founded },
                                 { icon: Users, label: 'Headcount', value: `~${company.headcount.toLocaleString()}` },
@@ -242,12 +238,11 @@ export default function CompanyProfile() {
                                 { icon: Globe, label: 'Domain', value: company.domain },
                                 { icon: Tag, label: 'Industry', value: company.industry },
                             ].map(({ icon: Icon, label, value }) => (
-                                <div key={label} className="flex items-center gap-3 p-3 rounded-lg"
-                                    style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)' }}>
-                                    <Icon size={14} style={{ color: 'var(--accent)', flexShrink: 0 }} />
+                                <div key={label} className="flex items-center gap-4 p-4 border-2 border-black bg-gray-50 shadow-[3px 3px 0px 0px #000]">
+                                    <Icon size={20} strokeWidth={3} className="text-indigo-600 flex-shrink-0" />
                                     <div>
-                                        <div className="text-[10px] uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>{label}</div>
-                                        <div className="text-sm font-medium">{value}</div>
+                                        <div className="text-[10px] font-black uppercase tracking-widest text-gray-500">{label}</div>
+                                        <div className="text-base font-black">{value.toString().toUpperCase()}</div>
                                     </div>
                                 </div>
                             ))}
@@ -255,27 +250,28 @@ export default function CompanyProfile() {
                     </div>
 
                     {/* Signals Timeline */}
-                    <div className="card p-5">
-                        <h2 className="text-sm font-semibold mb-4 flex items-center gap-2">
-                            <Clock size={15} style={{ color: 'var(--accent)' }} /> Activity Signals
+                    <div className="neo-card">
+                        <h2 className="text-xl font-black uppercase mb-8 flex items-center gap-3">
+                            <Clock size={20} strokeWidth={3} /> ACTIVITY SIGNALS
                         </h2>
-                        <div className="relative">
-                            <div className="absolute left-4 top-0 bottom-0 w-px" style={{ background: 'var(--border)' }} />
-                            <div className="space-y-4">
+                        <div className="relative pl-8">
+                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-black" />
+                            <div className="space-y-8">
                                 {company.signals.map((s: { type: string; date: string; text: string }, i: number) => {
-                                    const col = SIGNAL_COLORS[s.type] || { bg: 'var(--bg-hover)', text: 'var(--text-secondary)' };
+                                    const col = SIGNAL_COLORS[s.type] || { bg: '#ffffff', text: '#000000' };
                                     return (
-                                        <div key={i} className="flex gap-4 relative pl-8">
-                                            <div className="absolute left-2.5 w-3 h-3 rounded-full border-2 mt-1"
-                                                style={{ borderColor: col.text, background: col.bg }} />
-                                            <div className="flex-1">
-                                                <div className="flex items-center gap-2 mb-0.5">
-                                                    <span className="badge text-[10px]" style={{ background: col.bg, color: col.text }}>
+                                        <div key={i} className="relative">
+                                            <div className="absolute -left-[38px] top-1 w-6 h-6 border-4 border-black bg-white flex items-center justify-center">
+                                                <div className="w-2 h-2 bg-black" />
+                                            </div>
+                                            <div className="neo-card p-4 ml-2">
+                                                <div className="flex items-center gap-3 mb-2">
+                                                    <span className="neo-badge" style={{ background: col.bg, color: col.text }}>
                                                         {s.type}
                                                     </span>
-                                                    <span className="text-xs" style={{ color: 'var(--text-muted)' }}>{formatDate(s.date)}</span>
+                                                    <span className="text-xs font-black uppercase text-gray-500">{formatDate(s.date).toUpperCase()}</span>
                                                 </div>
-                                                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>{s.text}</p>
+                                                <p className="text-base font-bold leading-snug">{s.text}</p>
                                             </div>
                                         </div>
                                     );
@@ -285,50 +281,49 @@ export default function CompanyProfile() {
                     </div>
 
                     {/* Live Enrichment */}
-                    <div className="card p-5">
-                        <div className="flex items-center justify-between mb-4">
-                            <h2 className="text-sm font-semibold flex items-center gap-2">
-                                <Zap size={15} style={{ color: 'var(--accent)' }} /> Live Enrichment
+                    <div className="neo-card">
+                        <div className="flex items-center justify-between mb-8">
+                            <h2 className="text-xl font-black uppercase flex items-center gap-3">
+                                <Zap size={20} strokeWidth={3} /> LIVE INTELLIGENCE
                                 {enrichResult && (
-                                    <span className="text-[10px] font-normal" style={{ color: 'var(--text-muted)' }}>
-                                        · Cached {formatDate(enrichResult.enrichedAt)}
+                                    <span className="text-xs font-bold text-gray-500">
+                                        · CACHED {formatDate(enrichResult.enrichedAt).toUpperCase()}
                                     </span>
                                 )}
                             </h2>
-                            <button className="btn btn-primary" onClick={handleEnrich} disabled={enriching}>
+                            <button className="neo-btn neo-btn-accent" onClick={handleEnrich} disabled={enriching}>
                                 {enriching
-                                    ? <><Loader2 size={13} className="animate-spin" /> Enriching…</>
-                                    : <><Zap size={13} /> {enrichResult ? 'Re-enrich' : 'Enrich'}</>}
+                                    ? <><Loader2 size={18} className="animate-spin" /> ENRICHING…</>
+                                    : <><Zap size={18} strokeWidth={3} /> {enrichResult ? 'RE-ENRICH' : 'ENRICH'}</>}
                             </button>
                         </div>
 
                         {enrichError && (
-                            <div className="rounded-lg p-3 mb-4 flex items-start gap-2"
-                                style={{ background: 'var(--red-dim)', border: '1px solid rgba(239,68,68,0.2)' }}>
-                                <AlertCircle size={14} style={{ color: 'var(--red)', flexShrink: 0, marginTop: 1 }} />
-                                <span className="text-sm" style={{ color: 'var(--red)' }}>{enrichError}</span>
+                            <div className="neo-card bg-red-50 border-red-600 mb-8 flex items-start gap-3">
+                                <AlertCircle size={20} className="text-red-600 flex-shrink-0 mt-0.5" />
+                                <span className="text-base font-black uppercase text-red-600">{enrichError}</span>
                             </div>
                         )}
 
                         {enriching && !enrichResult && (
-                            <div className="space-y-3 animate-pulse">
+                            <div className="space-y-6 animate-pulse">
                                 {[80, 60, 90, 50].map((w, i) => (
-                                    <div key={i} className="skeleton h-3 rounded" style={{ width: `${w}%` }} />
+                                    <div key={i} className="h-4 bg-gray-200 border-2 border-black" style={{ width: `${w}%` }} />
                                 ))}
                             </div>
                         )}
 
                         {enrichResult && (
-                            <div className="space-y-5 animate-fade-in">
+                            <div className="space-y-8 animate-fade-in">
                                 <Section label="Summary">
-                                    <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{enrichResult.summary}</p>
+                                    <p className="text-lg font-bold leading-relaxed">{enrichResult.summary}</p>
                                 </Section>
 
                                 <Section label="What They Do">
-                                    <ul className="space-y-1.5">
+                                    <ul className="space-y-3">
                                         {enrichResult.bullets.map((b: string, i: number) => (
-                                            <li key={i} className="flex items-start gap-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
-                                                <span style={{ color: 'var(--accent)', flexShrink: 0, lineHeight: '20px' }}>›</span>
+                                            <li key={i} className="flex items-start gap-3 text-base font-bold">
+                                                <span className="w-5 h-5 bg-black text-white flex items-center justify-center text-xs flex-shrink-0 mt-0.5">›</span>
                                                 {b}
                                             </li>
                                         ))}
@@ -336,10 +331,9 @@ export default function CompanyProfile() {
                                 </Section>
 
                                 <Section label="Keywords">
-                                    <div className="flex flex-wrap gap-1.5">
+                                    <div className="flex flex-wrap gap-2">
                                         {enrichResult.keywords.map((k: string) => (
-                                            <span key={k} className="badge"
-                                                style={{ background: 'var(--accent-dim)', color: 'var(--accent)', border: '1px solid rgba(99,102,241,0.2)' }}>
+                                            <span key={k} className="neo-badge bg-[#facc15]">
                                                 {k}
                                             </span>
                                         ))}
@@ -347,75 +341,75 @@ export default function CompanyProfile() {
                                 </Section>
 
                                 <Section label="Derived Signals">
-                                    <div className="space-y-2">
+                                    <div className="space-y-3">
                                         {enrichResult.signals.map((s: string, i: number) => (
-                                            <div key={i} className="p-2.5 rounded-lg text-sm"
-                                                style={{ background: 'var(--green-dim)', border: '1px solid rgba(16,185,129,0.15)', color: 'var(--text-secondary)' }}>
-                                                {s}
+                                            <div key={i} className="p-4 border-2 border-black bg-green-50 font-bold text-base shadow-[3px 3px 0px 0px #000]">
+                                                {s.toUpperCase()}
                                             </div>
                                         ))}
                                     </div>
                                 </Section>
 
                                 <Section label="Sources">
-                                    {enrichResult.sources.map((src: { url: string; timestamp: string }, i: number) => (
-                                        <div key={i} className="flex items-center gap-2 text-xs" style={{ color: 'var(--text-muted)' }}>
-                                            <Globe size={10} />
-                                            <a href={src.url} target="_blank" rel="noopener noreferrer"
-                                                className="hover:underline truncate" style={{ color: 'var(--accent)' }}>
-                                                {src.url}
-                                            </a>
-                                            <span>· {formatDate(src.timestamp)}</span>
-                                        </div>
-                                    ))}
+                                    <div className="space-y-2">
+                                        {enrichResult.sources.map((src: { url: string; timestamp: string }, i: number) => (
+                                            <div key={i} className="flex items-center gap-3 text-xs font-black uppercase text-gray-500">
+                                                <Globe size={14} strokeWidth={3} />
+                                                <a href={src.url} target="_blank" rel="noopener noreferrer"
+                                                    className="hover:underline truncate text-indigo-600">
+                                                    {src.url}
+                                                </a>
+                                                <span>· {formatDate(src.timestamp).toUpperCase()}</span>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </Section>
                             </div>
                         )}
 
                         {!enrichResult && !enriching && !enrichError && (
-                            <div className="text-center py-8" style={{ color: 'var(--text-muted)' }}>
-                                <Zap size={28} className="mx-auto mb-3 opacity-30" />
-                                <p className="text-sm">Click <strong>Enrich</strong> to fetch live intelligence from {company.domain}</p>
+                            <div className="text-center py-12 border-2 border-dashed border-gray-400 bg-gray-50">
+                                <Zap size={48} strokeWidth={1} className="mx-auto mb-4 opacity-20" />
+                                <p className="text-lg font-black uppercase text-gray-400">Click ENRICH to fetch live intelligence</p>
                             </div>
                         )}
                     </div>
                 </div>
 
                 {/* ── Right 1/3 ── */}
-                <div className="space-y-4">
+                <div className="space-y-6">
                     {/* Notes */}
-                    <div className="card p-4">
-                        <h2 className="text-sm font-semibold mb-3 flex items-center gap-2">
-                            <FileText size={14} style={{ color: 'var(--accent)' }} /> Notes
+                    <div className="neo-card">
+                        <h2 className="text-lg font-black uppercase mb-4 flex items-center gap-3">
+                            <FileText size={18} strokeWidth={3} /> NOTES
                         </h2>
                         <textarea
-                            className="input text-xs resize-none mb-2"
-                            rows={10}
-                            placeholder="Add your investment thesis, observations, or due diligence notes…"
+                            className="neo-input text-sm font-bold resize-none mb-4 min-h-[300px]"
+                            placeholder="ADD INVESTMENT THESIS, OBSERVATIONS, OR DUE DILIGENCE NOTES…"
                             value={note}
                             onChange={e => { setNote(e.target.value); setNoteSaved(false); }}
                             style={{ lineHeight: '1.6' }}
                         />
-                        <button className={`btn w-full ${noteSaved ? 'btn-secondary' : 'btn-primary'}`} onClick={handleNoteSave}>
-                            {noteSaved ? <><Check size={13} /> Saved!</> : 'Save Note'}
+                        <button className={`neo-btn w-full ${noteSaved ? 'bg-white' : 'neo-btn-accent'}`} onClick={handleNoteSave}>
+                            {noteSaved ? <><Check size={18} strokeWidth={3} /> SAVED!</> : 'SAVE NOTE'}
                         </button>
                     </div>
 
                     {/* Quick stats */}
-                    <div className="card p-4">
-                        <div className="text-[10px] font-semibold uppercase tracking-widest mb-3" style={{ color: 'var(--text-muted)' }}>
-                            Quick Info
+                    <div className="neo-card bg-yellow-50">
+                        <div className="text-xs font-black uppercase tracking-widest mb-4">
+                            QUICK INFO
                         </div>
-                        <div className="space-y-2">
+                        <div className="space-y-3">
                             {[
                                 { label: 'Country', value: company.country },
                                 { label: 'Stage', value: company.stage },
-                                { label: 'Signals', value: `${company.signals.length} events` },
-                                { label: 'Tags', value: `${company.tags.length} tags` },
+                                { label: 'Signals', value: `${company.signals.length} EVENTS` },
+                                { label: 'Tags', value: `${company.tags.length} TAGS` },
                             ].map(({ label, value }) => (
-                                <div key={label} className="flex justify-between text-xs">
-                                    <span style={{ color: 'var(--text-secondary)' }}>{label}</span>
-                                    <span className="font-medium">{value}</span>
+                                <div key={label} className="flex justify-between text-sm font-black uppercase">
+                                    <span className="text-gray-500">{label}</span>
+                                    <span>{value}</span>
                                 </div>
                             ))}
                         </div>
@@ -429,7 +423,7 @@ export default function CompanyProfile() {
 function Section({ label, children }: { label: string; children: React.ReactNode }) {
     return (
         <div>
-            <div className="text-[10px] font-semibold uppercase tracking-widest mb-2" style={{ color: 'var(--text-muted)' }}>
+            <div className="text-xs font-black uppercase tracking-widest mb-4">
                 {label}
             </div>
             {children}

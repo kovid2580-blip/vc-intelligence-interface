@@ -15,23 +15,33 @@ const NAV = [
 ];
 
 const LogoIcon = ({ size = 20 }: { size?: number }) => (
-    <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+    <div
+        style={{
+            width: size + 4,
+            height: size + 4,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: 'var(--bg-white)',
+            border: '2px solid var(--border-main)',
+            boxShadow: '2px 2px 0px 0px var(--border-main)'
+        }}
     >
-        {/* Top layer */}
-        <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="white" stroke="white" />
-        {/* Middle layer */}
-        <path d="M2 12L12 17L22 12M2 7L12 12L22 7" stroke="white" strokeOpacity="0.8" />
-        {/* Bottom layer */}
-        <path d="M2 17L12 22L22 17" stroke="white" strokeOpacity="0.6" />
-    </svg>
+        <svg
+            width={size}
+            height={size}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="square"
+            strokeLinejoin="miter"
+        >
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="var(--bg-vibrant-accent)" stroke="var(--border-main)" />
+            <path d="M2 17L12 22L22 17" stroke="var(--border-main)" />
+            <path d="M2 12L12 17L22 12" stroke="var(--border-main)" />
+        </svg>
+    </div>
 );
 
 export default function Sidebar() {
@@ -41,14 +51,12 @@ export default function Sidebar() {
     return (
         <aside
             className="sidebar"
-            style={{ width: collapsed ? '60px' : '220px', transition: 'width 0.2s ease' }}
+            style={{ width: collapsed ? '80px' : '240px', transition: 'width 0.1s ease' }}
         >
             {/* Logo */}
             <div className="sidebar-logo" style={{ justifyContent: collapsed ? 'center' : 'flex-start' }}>
-                <div className="sidebar-logo-icon">
-                    <LogoIcon size={18} />
-                </div>
-                {!collapsed && <span className="sidebar-logo-text">VC Intel</span>}
+                <LogoIcon size={collapsed ? 24 : 20} />
+                {!collapsed && <span className="sidebar-logo-text">VC INTEL</span>}
             </div>
 
             {/* Nav */}
@@ -61,10 +69,13 @@ export default function Sidebar() {
                             href={href}
                             className={`sidebar-link ${active ? 'active' : ''}`}
                             title={collapsed ? label : undefined}
-                            style={{ justifyContent: collapsed ? 'center' : 'flex-start' }}
+                            style={{
+                                justifyContent: collapsed ? 'center' : 'flex-start',
+                                marginBottom: '4px'
+                            }}
                         >
-                            <Icon size={16} className="flex-shrink-0" />
-                            {!collapsed && <span>{label}</span>}
+                            <Icon size={18} strokeWidth={3} className="flex-shrink-0" />
+                            {!collapsed && <span>{label.toUpperCase()}</span>}
                         </Link>
                     );
                 })}
@@ -75,9 +86,10 @@ export default function Sidebar() {
                 className="sidebar-collapse-btn"
                 onClick={() => setCollapsed(c => !c)}
                 title={collapsed ? 'Expand' : 'Collapse'}
+                style={{ justifyContent: collapsed ? 'center' : 'flex-start' }}
             >
-                {collapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
-                {!collapsed && <span>Collapse</span>}
+                {collapsed ? <ChevronRight size={18} strokeWidth={3} /> : <ChevronLeft size={18} strokeWidth={3} />}
+                {!collapsed && <span style={{ fontSize: '12px', letterSpacing: '1px' }}>COLLAPSE</span>}
             </button>
         </aside>
     );
