@@ -1,0 +1,631 @@
+[
+    {
+        "id": "1",
+        "name": "LogiPulse",
+        "domain": "logipulse.ai",
+        "description": "AI-powered route optimization and fleet visibility platform for mid-sized logistics operators.",
+        "industry": "Logistics SaaS",
+        "stage": "Seed",
+        "location": "San Francisco, CA",
+        "country": "United States",
+        "founded": 2022,
+        "headcount": 18,
+        "funding": "$3.2M",
+        "tags": [
+            "AI",
+            "Route Optimization",
+            "Fleet",
+            "SaaS",
+            "Logistics"
+        ],
+        "signals": [
+            {
+                "date": "2024-05-10",
+                "type": "funding",
+                "text": "Closed $3.2M seed round led by Lux Capital"
+            },
+            {
+                "date": "2024-03-15",
+                "type": "product",
+                "text": "Launched real-time fleet visibility dashboard"
+            },
+            {
+                "date": "2024-01-20",
+                "type": "hiring",
+                "text": "Hiring ML engineers and enterprise sales reps"
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "name": "AgriNova Labs",
+        "domain": "agrinovalabs.com",
+        "description": "Precision agriculture platform using satellite imagery and predictive analytics for smallholder farmers.",
+        "industry": "AgTech",
+        "stage": "Pre-Seed",
+        "location": "Bangalore, India",
+        "country": "India",
+        "founded": 2023,
+        "headcount": 8,
+        "funding": "$800K",
+        "tags": [
+            "Precision Agriculture",
+            "Satellite",
+            "AI",
+            "Climate",
+            "Smallholder"
+        ],
+        "signals": [
+            {
+                "date": "2024-06-01",
+                "type": "funding",
+                "text": "Raised $800K pre-seed from Omnivore and angels"
+            },
+            {
+                "date": "2024-04-12",
+                "type": "product",
+                "text": "Pilot launched across 3 districts in Karnataka"
+            },
+            {
+                "date": "2024-02-28",
+                "type": "partnership",
+                "text": "MoU signed with state agriculture department"
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "name": "CarbonLedger",
+        "domain": "carbonledger.io",
+        "description": "Carbon accounting and reporting software for enterprise supply chains.",
+        "industry": "Climate FinTech",
+        "stage": "Series A",
+        "location": "London, UK",
+        "country": "United Kingdom",
+        "founded": 2021,
+        "headcount": 65,
+        "funding": "$12M",
+        "tags": [
+            "Carbon Accounting",
+            "ESG",
+            "Supply Chain",
+            "Compliance",
+            "Net Zero"
+        ],
+        "signals": [
+            {
+                "date": "2024-05-20",
+                "type": "funding",
+                "text": "Raised $12M Series A co-led by Plural and Pale Blue Dot"
+            },
+            {
+                "date": "2024-03-08",
+                "type": "product",
+                "text": "Launched Scope 3 supplier data collection module"
+            },
+            {
+                "date": "2024-01-15",
+                "type": "partnership",
+                "text": "Integration announced with SAP Sustainability Control Tower"
+            }
+        ]
+    },
+    {
+        "id": "4",
+        "name": "MediScribe AI",
+        "domain": "mediscribe.ai",
+        "description": "AI clinical documentation assistant that automates medical note-taking for physicians.",
+        "industry": "HealthTech",
+        "stage": "Seed",
+        "location": "Boston, MA",
+        "country": "United States",
+        "founded": 2022,
+        "headcount": 22,
+        "funding": "$5.5M",
+        "tags": [
+            "Clinical AI",
+            "NLP",
+            "EHR",
+            "Physician Tools",
+            "Voice AI"
+        ],
+        "signals": [
+            {
+                "date": "2024-06-05",
+                "type": "funding",
+                "text": "Closed $5.5M seed from a16z Bio and DCVC"
+            },
+            {
+                "date": "2024-04-22",
+                "type": "partnership",
+                "text": "Integrated with Epic EHR for 8 hospital systems"
+            },
+            {
+                "date": "2024-02-10",
+                "type": "growth",
+                "text": "Reduced physician documentation time by 68% in trial"
+            }
+        ]
+    },
+    {
+        "id": "5",
+        "name": "StackForge",
+        "domain": "stackforge.dev",
+        "description": "DevOps automation toolkit that simplifies CI/CD setup for early-stage startups.",
+        "industry": "Developer Tools",
+        "stage": "Pre-Seed",
+        "location": "Toronto, Canada",
+        "country": "Canada",
+        "founded": 2023,
+        "headcount": 6,
+        "funding": "$650K",
+        "tags": [
+            "DevOps",
+            "CI/CD",
+            "Developer Tools",
+            "Open Source",
+            "Automation"
+        ],
+        "signals": [
+            {
+                "date": "2024-05-18",
+                "type": "funding",
+                "text": "Raised $650K from YC W24 and angels"
+            },
+            {
+                "date": "2024-04-01",
+                "type": "product",
+                "text": "Launched GitHub Actions integration in public beta"
+            },
+            {
+                "date": "2024-03-10",
+                "type": "growth",
+                "text": "Reached 2,000 developer signups organically"
+            }
+        ]
+    },
+    {
+        "id": "6",
+        "name": "PayGrid",
+        "domain": "paygrid.co",
+        "description": "API-first embedded payments infrastructure for vertical SaaS platforms.",
+        "industry": "FinTech",
+        "stage": "Seed",
+        "location": "Mumbai, India",
+        "country": "India",
+        "founded": 2021,
+        "headcount": 30,
+        "funding": "$4.8M",
+        "tags": [
+            "Embedded Finance",
+            "Payments API",
+            "Vertical SaaS",
+            "B2B",
+            "Infrastructure"
+        ],
+        "signals": [
+            {
+                "date": "2024-05-30",
+                "type": "funding",
+                "text": "Raised $4.8M seed from Sequoia India Surge"
+            },
+            {
+                "date": "2024-03-25",
+                "type": "product",
+                "text": "Launched UPI and BNPL modules for SaaS partners"
+            },
+            {
+                "date": "2024-01-10",
+                "type": "growth",
+                "text": "Crossed $50M annualized payment volume"
+            }
+        ]
+    },
+    {
+        "id": "7",
+        "name": "UrbanVolt",
+        "domain": "urbanvolt.energy",
+        "description": "Distributed energy management platform for commercial buildings.",
+        "industry": "Climate Tech",
+        "stage": "Series A",
+        "location": "Berlin, Germany",
+        "country": "Germany",
+        "founded": 2020,
+        "headcount": 58,
+        "funding": "$15M",
+        "tags": [
+            "Energy Management",
+            "Buildings",
+            "Grid Tech",
+            "Sustainability",
+            "IoT"
+        ],
+        "signals": [
+            {
+                "date": "2024-04-14",
+                "type": "funding",
+                "text": "Raised €14M Series A led by World Fund"
+            },
+            {
+                "date": "2024-02-20",
+                "type": "product",
+                "text": "Launched Virtual Power Plant orchestration layer"
+            },
+            {
+                "date": "2023-11-05",
+                "type": "expansion",
+                "text": "Expanded to France and Benelux markets"
+            }
+        ]
+    },
+    {
+        "id": "8",
+        "name": "HireBeacon",
+        "domain": "hirebeacon.io",
+        "description": "AI-driven talent sourcing and candidate screening platform for growth-stage companies.",
+        "industry": "HR Tech",
+        "stage": "Seed",
+        "location": "New York, NY",
+        "country": "United States",
+        "founded": 2022,
+        "headcount": 25,
+        "funding": "$4.1M",
+        "tags": [
+            "AI Recruiting",
+            "Talent Sourcing",
+            "Screening",
+            "HR Tech",
+            "SaaS"
+        ],
+        "signals": [
+            {
+                "date": "2024-05-12",
+                "type": "funding",
+                "text": "Raised $4.1M from Homebrew and Work-Bench"
+            },
+            {
+                "date": "2024-03-30",
+                "type": "product",
+                "text": "Launched AI interviewer with structured scoring"
+            },
+            {
+                "date": "2024-01-28",
+                "type": "growth",
+                "text": "300 companies onboarded in first 6 months"
+            }
+        ]
+    },
+    {
+        "id": "9",
+        "name": "SecureLayer",
+        "domain": "securelayer.io",
+        "description": "Cloud-native security monitoring platform for containerized applications.",
+        "industry": "Cybersecurity",
+        "stage": "Series A",
+        "location": "Tel Aviv, Israel",
+        "country": "Israel",
+        "founded": 2020,
+        "headcount": 72,
+        "funding": "$18M",
+        "tags": [
+            "Cloud Security",
+            "Kubernetes",
+            "CSPM",
+            "DevSecOps",
+            "Zero Trust"
+        ],
+        "signals": [
+            {
+                "date": "2024-06-03",
+                "type": "funding",
+                "text": "Raised $18M Series A from Team8 and Bessemer"
+            },
+            {
+                "date": "2024-04-10",
+                "type": "product",
+                "text": "Launched runtime threat detection for EKS and GKE"
+            },
+            {
+                "date": "2024-02-05",
+                "type": "partnership",
+                "text": "Listed on AWS Marketplace and GCP Marketplace"
+            }
+        ]
+    },
+    {
+        "id": "10",
+        "name": "RetailMind",
+        "domain": "retailmind.ai",
+        "description": "Demand forecasting and inventory intelligence platform for omnichannel retailers.",
+        "industry": "Retail Analytics",
+        "stage": "Seed",
+        "location": "Austin, TX",
+        "country": "United States",
+        "founded": 2021,
+        "headcount": 28,
+        "funding": "$6M",
+        "tags": [
+            "Demand Forecasting",
+            "Inventory",
+            "Retail",
+            "AI",
+            "Omnichannel"
+        ],
+        "signals": [
+            {
+                "date": "2024-05-25",
+                "type": "funding",
+                "text": "Raised $6M seed from Flybridge and SemperVirens"
+            },
+            {
+                "date": "2024-03-18",
+                "type": "product",
+                "text": "Launched SKU-level demand sensing engine"
+            },
+            {
+                "date": "2024-01-22",
+                "type": "growth",
+                "text": "Signed first Fortune 500 retail customer"
+            }
+        ]
+    },
+    {
+        "id": "11",
+        "name": "FlowLedger",
+        "domain": "flowledger.com",
+        "description": "Cash flow analytics and forecasting platform for SMBs.",
+        "industry": "B2B SaaS",
+        "stage": "Pre-Seed",
+        "location": "Singapore",
+        "country": "Singapore",
+        "founded": 2023,
+        "headcount": 7,
+        "funding": "$900K",
+        "tags": [
+            "Cash Flow",
+            "Finance",
+            "SMB",
+            "Analytics",
+            "Forecasting"
+        ],
+        "signals": [
+            {
+                "date": "2024-05-08",
+                "type": "funding",
+                "text": "Raised $900K from Antler Singapore"
+            },
+            {
+                "date": "2024-03-20",
+                "type": "product",
+                "text": "Launched QuickBooks and Xero data connectors"
+            },
+            {
+                "date": "2024-02-14",
+                "type": "growth",
+                "text": "150 SMBs in beta across Singapore and Malaysia"
+            }
+        ]
+    },
+    {
+        "id": "12",
+        "name": "NeuroGrid",
+        "domain": "neurogrid.ai",
+        "description": "Edge AI deployment infrastructure for real-time computer vision applications.",
+        "industry": "AI Infrastructure",
+        "stage": "Series A",
+        "location": "Seattle, WA",
+        "country": "United States",
+        "founded": 2020,
+        "headcount": 55,
+        "funding": "$16M",
+        "tags": [
+            "Edge AI",
+            "Computer Vision",
+            "MLOps",
+            "Inference",
+            "Real-Time"
+        ],
+        "signals": [
+            {
+                "date": "2024-05-15",
+                "type": "funding",
+                "text": "Raised $16M Series A led by Intel Capital"
+            },
+            {
+                "date": "2024-03-05",
+                "type": "product",
+                "text": "Launched NeuroGrid Edge SDK for NVIDIA Jetson"
+            },
+            {
+                "date": "2024-01-30",
+                "type": "partnership",
+                "text": "Design partnership with Bosch Industrial for factory vision"
+            }
+        ]
+    },
+    {
+        "id": "13",
+        "name": "BuildMetric",
+        "domain": "buildmetric.io",
+        "description": "Project cost tracking and performance analytics platform for construction firms.",
+        "industry": "Construction Tech",
+        "stage": "Seed",
+        "location": "Sydney, Australia",
+        "country": "Australia",
+        "founded": 2022,
+        "headcount": 20,
+        "funding": "$3.8M",
+        "tags": [
+            "Construction",
+            "Project Analytics",
+            "Cost Tracking",
+            "SaaS",
+            "PropTech"
+        ],
+        "signals": [
+            {
+                "date": "2024-04-28",
+                "type": "funding",
+                "text": "Raised $3.8M seed from Blackbird Ventures"
+            },
+            {
+                "date": "2024-03-01",
+                "type": "product",
+                "text": "Launched AI-based cost overrun prediction module"
+            },
+            {
+                "date": "2024-01-12",
+                "type": "growth",
+                "text": "Deployed across 40 construction firms in ANZ"
+            }
+        ]
+    },
+    {
+        "id": "14",
+        "name": "Edvanta",
+        "domain": "edvanta.co",
+        "description": "Outcome-based learning analytics platform for higher education institutions.",
+        "industry": "EdTech",
+        "stage": "Pre-Seed",
+        "location": "Delhi, India",
+        "country": "India",
+        "founded": 2023,
+        "headcount": 9,
+        "funding": "$700K",
+        "tags": [
+            "EdTech",
+            "Learning Analytics",
+            "Higher Education",
+            "Outcomes",
+            "AI"
+        ],
+        "signals": [
+            {
+                "date": "2024-05-22",
+                "type": "funding",
+                "text": "Raised $700K from Stellaris Venture Partners"
+            },
+            {
+                "date": "2024-04-08",
+                "type": "partnership",
+                "text": "Pilot live at 4 universities including IIT Bombay"
+            },
+            {
+                "date": "2024-02-18",
+                "type": "product",
+                "text": "Launched at-risk student identification dashboard"
+            }
+        ]
+    },
+    {
+        "id": "15",
+        "name": "FleetSync",
+        "domain": "fleetsync.io",
+        "description": "Connected fleet operations and predictive maintenance software.",
+        "industry": "Mobility Tech",
+        "stage": "Seed",
+        "location": "Chicago, IL",
+        "country": "United States",
+        "founded": 2021,
+        "headcount": 34,
+        "funding": "$5.2M",
+        "tags": [
+            "Fleet Management",
+            "Predictive Maintenance",
+            "IoT",
+            "Telematics",
+            "Mobility"
+        ],
+        "signals": [
+            {
+                "date": "2024-04-18",
+                "type": "funding",
+                "text": "Raised $5.2M from Trucks VC and MaC Ventures"
+            },
+            {
+                "date": "2024-02-25",
+                "type": "product",
+                "text": "Launched AI-powered breakdown prediction engine"
+            },
+            {
+                "date": "2024-01-08",
+                "type": "growth",
+                "text": "10,000 vehicles instrumented across US fleets"
+            }
+        ]
+    },
+    {
+        "id": "16",
+        "name": "DataHarbor",
+        "domain": "dataharbor.io",
+        "description": "Secure data exchange infrastructure for regulated industries.",
+        "industry": "Data Infrastructure",
+        "stage": "Series A",
+        "location": "Amsterdam, Netherlands",
+        "country": "Netherlands",
+        "founded": 2020,
+        "headcount": 48,
+        "funding": "$13M",
+        "tags": [
+            "Data Sharing",
+            "Privacy",
+            "Regulated Industries",
+            "API",
+            "Compliance"
+        ],
+        "signals": [
+            {
+                "date": "2024-05-06",
+                "type": "funding",
+                "text": "Raised €12M Series A from Peak Capital and ING Ventures"
+            },
+            {
+                "date": "2024-03-14",
+                "type": "product",
+                "text": "Launched GDPR-native data clean room for financial services"
+            },
+            {
+                "date": "2024-01-25",
+                "type": "expansion",
+                "text": "Expanded to UK and DACH markets"
+            }
+        ]
+    },
+    {
+        "id": "17",
+        "name": "AquaSense",
+        "domain": "aquasense.tech",
+        "description": "IoT-based water quality monitoring platform for municipal systems.",
+        "industry": "Climate Tech",
+        "stage": "Pre-Seed",
+        "location": "Pune, India",
+        "country": "India",
+        "founded": 2023,
+        "headcount": 10,
+        "funding": "$600K",
+        "tags": [
+            "IoT",
+            "Water Tech",
+            "Climate",
+            "Smart Cities",
+            "Monitoring"
+        ],
+        "signals": [
+            {
+                "date": "2024-05-30",
+                "type": "funding",
+                "text": "Raised $600K from Acumen and WaterSHED"
+            },
+            {
+                "date": "2024-04-05",
+                "type": "partnership",
+                "text": "Pilot with Pune Municipal Corporation across 12 zones"
+            },
+            {
+                "date": "2024-02-22",
+                "type": "product",
+                "text": "Launched real-time contamination alert system"
+            }
+        ]
+    }
+]
