@@ -68,3 +68,5 @@ To deploy your own version:
 
 ---
 Built with pride as a high-performance VC tool.
+
+![image alt](https://github.com/kovid2580-blip/vc-intelligence-interface/blob/c7a4ba642fdebf9b1459d3f6bae6527ef61244ae/Screenshot%202026-04-30%20141715.png)
